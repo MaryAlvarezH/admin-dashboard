@@ -155,7 +155,24 @@ var colors = {
   black: '#12263F',
   white: '#FFFFFF',
   transparent: 'transparent',
-  colorList: ['#5e72e4', '#172b4d', '#11cdef', '#2dce89', '#f5365c', '#fb6340']
+  colorList: [
+    '#5e72e4',
+    '#172b4d',
+    '#11cdef',
+    '#2dce89',
+    '#f5365c',
+    '#fb6340',
+    '#ffd600',
+    '#f3a4b5',
+    '#5e72e4',
+    '#172b4d',
+    '#11cdef',
+    '#2dce89',
+    '#f5365c',
+    '#fb6340',
+    '#ffd600',
+    '#f3a4b5'
+  ]
 };
 
 export function chartOptions() {
@@ -209,22 +226,22 @@ export function chartOptions() {
         }
       },
       doughnut: {
-        cutoutPercentage: 83,
-        legendCallback: function (chart) {
-          var data = chart.data;
-          var content = '';
+        cutoutPercentage: 70,
+        // legendCallback: function (chart) {
+        //   var data = chart.data;
+        //   var content = '';
 
-          data.labels.forEach(function (label, index) {
-            var bgColor = data.datasets[0].backgroundColor[index];
+        //   data.labels.forEach(function (label, index) {
+        //     var bgColor = data.datasets[0].backgroundColor[index];
 
-            content += '<span class="chart-legend-item">';
-            content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>';
-            content += label;
-            content += '</span>';
-          });
+        //     content += '<span class="chart-legend-item">';
+        //     content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>';
+        //     content += label;
+        //     content += '</span>';
+        //   });
 
-          return content;
-        }
+        //   return content;
+        // }
       }
     }
   }
@@ -327,7 +344,7 @@ export const chartBarOptions = {
           ticks: {
             callback: function (value) {
               if (!(value % 10)) {
-                //return '$' + value + 'k'
+                return '$' + value + 'k'
                 return value;
               }
             }
@@ -369,29 +386,38 @@ export const chartDoughnutOptions = {
     legend: {
       display: true,
       position: 'left',
-      labels: {
-        generateLabels: (chart) => {
-          const { data } = chart;
-          return data.labels.map((label, i) => {
-            const meta = chart.getDatasetMeta(0);
-            const arc = meta.data[i];
-            const value = chart.config.data.datasets[arc._datasetIndex].data[arc._index];
-            const custom = (arc && arc.custom) || {};
-            const { getValueAtIndexOrDefault } = Chart.helpers;
-            const ds = data.datasets[0];
-            const arcOpts = chart.options.elements.arc;
-            const fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
-            const stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
-            return {
-              text: `${label}: ${value}%`,
-              fillStyle: fill,
-              strokeStyle: stroke,
-              index: i
-            }
-          })
-        }
-      }
-    }
+      // labels: {
+      //   generateLabels: (chart) => {
+      //     const { data } = chart;
+      //     return data.labels.map((label, i) => {
+      //       const meta = chart.getDatasetMeta(0);
+      //       const arc = meta.data[i];
+      //       const value = chart.config.data.datasets[arc._datasetIndex].data[arc._index];
+      //       const custom = (arc && arc.custom) || {};
+      //       const { getValueAtIndexOrDefault } = Chart.helpers;
+      //       const ds = data.datasets[0];
+      //       const arcOpts = chart.options.elements.arc;
+      //       const fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+      //       const stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+      //       return {
+      //         text: `${label}: ${value}%`,
+      //         fillStyle: fill,
+      //         strokeStyle: stroke,
+      //         index: i
+      //       }
+      //     })
+      //   }
+      // }
+    },
+    plugins: {
+      datalabels: {
+        color: '#fff',
+        display: true,
+        formatter: function (value, ctx) {
+          return 8 + '%';
+        },
+      },
+    },
   },
   data: {
     // labels: ["Man", "Woman"],
@@ -403,6 +429,13 @@ export const chartDoughnutOptions = {
       }
     ]
   }
+}
+
+function total(chart) {
+  let data = chart.chart.data.datasets[0].data;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  var total = data.reduce(reducer);
+  return total;
 }
 
 export const chartPieOptions = {

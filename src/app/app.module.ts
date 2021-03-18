@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { ChartJsComponent } from './pages/chart-js/chart-js.component';
+import { DatasetsService } from './services/datasets.service';
 
 
 @NgModule({
@@ -27,9 +29,10 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ChartJsComponent,
   ],
-  providers: [],
+  providers: [DatasetsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
