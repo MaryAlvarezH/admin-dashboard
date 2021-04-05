@@ -27,6 +27,14 @@ $coop-dashboard-theme: mat-light-theme((
   )
 ));
 
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: 'HPSimplifiedLight, Arial, sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+@include mat-core($custom-typography);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -37,10 +45,45 @@ $coop-dashboard-theme: mat-light-theme((
 // CUSTOM ANGULAR MATERIAL
 
 // table
-.mat-table {
-  font-family: inherit;
-}
-
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   padding: 0 8px !important;
+}
+
+.mat-header-cell  {
+  font-size: 14.5px;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 14px;
+}
+
+.mat-select-trigger {
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+  border: 0;
+  transition: box-shadow 0.15s ease;
+  padding: 0.625rem 0.75rem;
+  white-space: nowrap;
+
+    .mat-select-value {
+      color: #767676;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .mat-select-arrow {
+      color: #adb5bd;
+    }
+}
+
+.mat-select-panel:not([class*=mat-elevation-z]){
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 0.375rem;
+}
+
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+  height: 2.5em !important;
+  color: #767676;
+  font-size: 0.875rem !important;
 }

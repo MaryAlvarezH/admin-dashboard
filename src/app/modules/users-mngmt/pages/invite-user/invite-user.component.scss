@@ -1,0 +1,19 @@
+.form-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header {
+    div:last-child {
+        text-align: right;
+
+        @media screen and (min-width: 400px) and (max-width: 990px) {
+            text-align: left;
+        }
+    }
+}
+
+.aditional-info {
+    padding: 20px;
+}
