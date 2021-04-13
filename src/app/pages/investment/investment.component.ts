@@ -24,11 +24,11 @@ import * as moment from 'moment';
 import { DatasetsService } from 'src/app/services/datasets.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-investment',
+  templateUrl: './investment.component.html',
+  styleUrls: ['./investment.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class InvestmentComponent implements OnInit {
   public genericChart;
   public chart1;
   public chart2;
