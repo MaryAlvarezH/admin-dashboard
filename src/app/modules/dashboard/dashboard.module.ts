@@ -17,6 +17,14 @@ import { GraphLineSeriesComponent } from './components/graphics/graph-line-serie
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RetailFiltersComponent } from './components/retail-filters/retail-filters.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AudiencesWrapperComponent } from './components/audiences-wrapper/audiences-wrapper.component';
+import { GraphLineComponent } from './components/graphics/graph-line/graph-line.component';
+import { GraphBarComponent } from './components/graphics/graph-bar/graph-bar.component';
+import { GraphHeatMapComponent } from './components/graphics/graph-heat-map/graph-heat-map.component';
+import { GraphBarHorizontalComponent } from './components/graphics/graph-bar-horizontal/graph-bar-horizontal.component';
+import { GraphLollipopComponent } from './components/graphics/graph-lollipop/graph-lollipop.component';
 
 
 
@@ -29,7 +37,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardStatComponent,
     GraphPieComponent,
     GraphLineComparisonComponent,
-    GraphLineSeriesComponent
+    GraphLineSeriesComponent,
+    RetailFiltersComponent,
+    AudiencesWrapperComponent,
+    GraphLineComponent,
+    GraphBarComponent,
+    GraphHeatMapComponent,
+    GraphBarHorizontalComponent,
+    GraphLollipopComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +55,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRippleModule,
     MatTableModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'never' } }]
 })
