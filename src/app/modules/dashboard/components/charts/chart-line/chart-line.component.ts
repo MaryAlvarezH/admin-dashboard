@@ -62,6 +62,7 @@ export class ChartLineComponent implements OnInit, AfterViewInit {
     series.tooltip.background.cornerRadius = 20;
     series.tooltip.background.fillOpacity = 0.5;
     series.tooltip.label.padding(12, 12, 12, 12)
+    series.tensionX = 0.85;
 
     // Add scrollbar
     // chart.scrollbarX = new am4charts.XYChartScrollbar();

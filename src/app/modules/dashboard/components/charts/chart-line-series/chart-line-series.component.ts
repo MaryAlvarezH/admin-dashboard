@@ -67,6 +67,7 @@ export class ChartLineSeriesComponent implements OnInit, AfterViewInit {
       series.dataFields.valueY = 'value' + s;
       series.dataFields.dateX = 'date';
       series.name = name;
+      series.tensionX = 0.85;
 
       let segment = series.segments.template;
       segment.interactionsEnabled = true;

@@ -53,6 +53,7 @@ export class ChartLineComparisonComponent implements OnInit, AfterViewInit {
     series.minBulletDistance = 10;
     series.tooltipText = "[bold]{date.formatDate()}:[/] {value1}\n[bold]{previousDate.formatDate()}:[/] {value2}";
     series.tooltip.pointerOrientation = "vertical";
+    series.tensionX = 0.85;
 
     // Create series
     var series2 = chart.series.push(new am4charts.LineSeries());
@@ -61,15 +62,12 @@ export class ChartLineComparisonComponent implements OnInit, AfterViewInit {
     series2.strokeWidth = 2;
     series2.strokeDasharray = "3,4";
     series2.stroke = series.stroke;
-
-
+    series2.tensionX = 0.85;
 
     // Add cursor
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.xAxis = dateAxis;
 
     this.loadStatus = 2;
-
   }
-
 }
