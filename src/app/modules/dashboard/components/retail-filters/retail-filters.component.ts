@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 export class RetailFiltersComponent implements OnInit {
 
   sources = new FormControl();
-  sourceList: any[] = [{ id: 1, name: 'Fuente 1' }, { id: 2, name: 'Fuente 2' }, { id: 3, name: 'Fuente 3' }, { id: 4, name: 'Fuente 4' }];
+  sourceList: any[] = [{ id: 1, name: 'Google' }, { id: 2, name: 'Display' }, { id: 3, name: 'Social' }, { id: 4, name: 'Otros' }];
 
   ways = new FormControl();
   wayList: any[] = [{ id: 1, name: 'Medio 1' }, { id: 2, name: 'Medio 2' }, { id: 3, name: 'Medio 3' }];;
