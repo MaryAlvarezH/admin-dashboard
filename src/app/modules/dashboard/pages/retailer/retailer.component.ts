@@ -71,11 +71,12 @@ export class RetailerComponent implements OnInit, AfterViewInit {
     }
   ]
 
-  displayedColumns: string[] = ['name', 'investment', 'impressions', 'clicks', 'ctr', 'cpm', 'cpc'];
+  displayedColumns: string[] = ['name', 'investment', 'impressions', 'clicks', 'ctr', 'cpm', 'cpc', 'roas'];
+  displayedColumns2: string[] = ['name', 'investment', 'impressions', 'clicks', 'ctr', 'cpm', 'cpc'];
   private campaigns = [
-    { name: 'Campaign 1', investment: 5000, impressions: 130000, clicks: 7000, ctr: 0.55, ctr_benchmark: 0.12, cpm: 750, cpc: 50 },
-    { name: 'Campaign 2', investment: 7000, impressions: 150000, clicks: 8000, ctr: 25.55, ctr_benchmark: 22.12, cpm: 450, cpc: 30 },
-    { name: 'Campaign 3', investment: 2000, impressions: 80000, clicks: 4000, ctr: 10.30, ctr_benchmark: 11.20, cpm: 120, cpc: 80 }
+    { name: 'Campaign 1', investment: 5000, impressions: 130000, clicks: 7000, ctr: 0.55, ctr_benchmark: 0.12, cpm: 750, cpc: 50, roas: 40 },
+    { name: 'Campaign 2', investment: 7000, impressions: 150000, clicks: 8000, ctr: 25.55, ctr_benchmark: 22.12, cpm: 450, cpc: 30, roas: 50 },
+    { name: 'Campaign 3', investment: 2000, impressions: 80000, clicks: 4000, ctr: 10.30, ctr_benchmark: 11.20, cpm: 120, cpc: 80, roas: 250 }
   ];
   dataSource = new MatTableDataSource<any>(this.campaigns);
   getReqStatus: number = 0;
