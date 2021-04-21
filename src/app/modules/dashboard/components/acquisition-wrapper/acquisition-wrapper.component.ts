@@ -9,6 +9,47 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AcquisitionWrapperComponent implements OnInit, AfterViewInit {
 
+  selectedTab1: number = 1;
+
+  usersByCategory = [
+    {
+      name: 'Search',
+      serie: [
+        { date: new Date(2021, 3, 15), value: 2500 },
+        { date: new Date(2021, 3, 16), value: 4700 },
+        { date: new Date(2021, 3, 17), value: 4600 },
+        { date: new Date(2021, 3, 18), value: 4700 },
+        { date: new Date(2021, 3, 19), value: 4500 },
+        { date: new Date(2021, 3, 20), value: 4300 },
+        { date: new Date(2021, 3, 21), value: 4400 }
+      ]
+    },
+    {
+      name: 'Marketing',
+      serie: [
+        { date: new Date(2021, 3, 15), value: 2000 },
+        { date: new Date(2021, 3, 16), value: 3500 },
+        { date: new Date(2021, 3, 17), value: 3200 },
+        { date: new Date(2021, 3, 18), value: 3600 },
+        { date: new Date(2021, 3, 19), value: 3000 },
+        { date: new Date(2021, 3, 20), value: 3400 },
+        { date: new Date(2021, 3, 21), value: 3000 }
+      ]
+    },
+    {
+      name: 'Ventas',
+      serie: [
+        { date: new Date(2021, 3, 15), value: 4500 },
+        { date: new Date(2021, 3, 16), value: 3700 },
+        { date: new Date(2021, 3, 17), value: 3800 },
+        { date: new Date(2021, 3, 18), value: 3200 },
+        { date: new Date(2021, 3, 19), value: 3500 },
+        { date: new Date(2021, 3, 20), value: 4500 },
+        { date: new Date(2021, 3, 21), value: 4700 }
+      ]
+    }
+  ]
+
   usersBySectors = [
     {
       name: 'Search',
@@ -52,49 +93,49 @@ export class AcquisitionWrapperComponent implements OnInit, AfterViewInit {
     {
       name: 'Google',
       serie: [
-        { date: new Date(2021, 3, 15), value: 2800 },
-        { date: new Date(2021, 3, 16), value: 1500 },
-        { date: new Date(2021, 3, 17), value: 3400 },
-        { date: new Date(2021, 3, 18), value: 3200 },
-        { date: new Date(2021, 3, 19), value: 3150 },
-        { date: new Date(2021, 3, 20), value: 2900 },
-        { date: new Date(2021, 3, 21), value: 3400 }
+        { date: new Date(2021, 3, 15), value: 350 },
+        { date: new Date(2021, 3, 16), value: 280 },
+        { date: new Date(2021, 3, 17), value: 120 },
+        { date: new Date(2021, 3, 18), value: 400 },
+        { date: new Date(2021, 3, 19), value: 450 },
+        { date: new Date(2021, 3, 20), value: 100 },
+        { date: new Date(2021, 3, 21), value: 80 }
       ]
     },
     {
       name: 'Display',
       serie: [
-        { date: new Date(2021, 3, 15), value: 1400 },
-        { date: new Date(2021, 3, 16), value: 1300 },
-        { date: new Date(2021, 3, 17), value: 1250 },
-        { date: new Date(2021, 3, 18), value: 1100 },
-        { date: new Date(2021, 3, 19), value: 1300 },
-        { date: new Date(2021, 3, 20), value: 1450 },
-        { date: new Date(2021, 3, 21), value: 1580 }
+        { date: new Date(2021, 3, 15), value: 80 },
+        { date: new Date(2021, 3, 16), value: 150 },
+        { date: new Date(2021, 3, 17), value: 120 },
+        { date: new Date(2021, 3, 18), value: 100 },
+        { date: new Date(2021, 3, 19), value: 70 },
+        { date: new Date(2021, 3, 20), value: 85 },
+        { date: new Date(2021, 3, 21), value: 160 }
       ]
     },
     {
       name: 'Social',
       serie: [
-        { date: new Date(2021, 3, 15), value: 4800 },
-        { date: new Date(2021, 3, 16), value: 2500 },
-        { date: new Date(2021, 3, 17), value: 3600 },
-        { date: new Date(2021, 3, 18), value: 3700 },
-        { date: new Date(2021, 3, 19), value: 3600 },
-        { date: new Date(2021, 3, 20), value: 3650 },
-        { date: new Date(2021, 3, 21), value: 3800 }
+        { date: new Date(2021, 3, 15), value: 40 },
+        { date: new Date(2021, 3, 16), value: 60 },
+        { date: new Date(2021, 3, 17), value: 95 },
+        { date: new Date(2021, 3, 18), value: 120 },
+        { date: new Date(2021, 3, 19), value: 121 },
+        { date: new Date(2021, 3, 20), value: 96 },
+        { date: new Date(2021, 3, 21), value: 88 }
       ]
     },
     {
       name: 'Otros',
       serie: [
-        { date: new Date(2021, 3, 15), value: 1300 },
-        { date: new Date(2021, 3, 16), value: 1850 },
-        { date: new Date(2021, 3, 17), value: 2100 },
-        { date: new Date(2021, 3, 18), value: 2150 },
-        { date: new Date(2021, 3, 19), value: 2200 },
-        { date: new Date(2021, 3, 20), value: 2300 },
-        { date: new Date(2021, 3, 21), value: 2400 }
+        { date: new Date(2021, 3, 15), value: 44 },
+        { date: new Date(2021, 3, 16), value: 56 },
+        { date: new Date(2021, 3, 17), value: 75 },
+        { date: new Date(2021, 3, 18), value: 95 },
+        { date: new Date(2021, 3, 19), value: 80 },
+        { date: new Date(2021, 3, 20), value: 120 },
+        { date: new Date(2021, 3, 21), value: 200 }
       ]
     }
   ]
@@ -139,5 +180,15 @@ export class AcquisitionWrapperComponent implements OnInit, AfterViewInit {
 
       return `${startIndex + 1} - ${endIndex} de ${length}`;
     }
+  }
+
+  changeData(category, selectedTab) {
+    if (category === 'source') {
+      this.usersByCategory = this.usersBySources;
+    } else if (category === 'sector') {
+      this.usersByCategory = this.usersBySectors;
+    }
+
+    this.selectedTab1 = selectedTab;
   }
 }
