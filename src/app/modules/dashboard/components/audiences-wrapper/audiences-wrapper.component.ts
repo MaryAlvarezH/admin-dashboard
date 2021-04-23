@@ -60,17 +60,17 @@ export class AudiencesWrapperComponent implements OnInit {
   ]
 
   deviceConversion = [
-    { device: 'Escritorio', value: 19000 },
+    { device: 'Desktop', value: 19000 },
     { device: 'Mobile', value: 40000 },
   ]
 
   deviceAUP = [
-    { device: 'Escritorio', value: 22000 },
+    { device: 'Desktop', value: 22000 },
     { device: 'Mobile', value: 35000 },
   ]
 
   deviceBR = [
-    { device: 'Escritorio', value: 35000 },
+    { device: 'Desktop', value: 35000 },
     { device: 'Mobile', value: 12000 },
   ]
 

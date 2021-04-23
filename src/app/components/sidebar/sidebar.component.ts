@@ -20,7 +20,7 @@ declare interface RouteInfo {
 export const ROUTES = [
   {
     path: '/dashboard/investment',
-    title: 'Inversión',
+    title: 'Google Investment',
     isForAdmin: false
   }
 ]

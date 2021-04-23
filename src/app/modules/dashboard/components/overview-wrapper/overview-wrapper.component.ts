@@ -518,12 +518,12 @@ export class OverviewWrapperComponent implements OnInit {
   ]
 
   devicesByTraffic: any[] = [
-    { id: 1, name: 'Escritorio', value: 2500 },
+    { id: 1, name: 'Desktop', value: 2500 },
     { id: 2, name: 'Mobile', value: 10500 },
   ]
 
   devicesBySales: any[] = [
-    { id: 1, name: 'Escritorio', value: 300 },
+    { id: 1, name: 'Desktop', value: 300 },
     { id: 2, name: 'Mobile', value: 450 },
   ]
 
