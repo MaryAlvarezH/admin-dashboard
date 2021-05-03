@@ -78,6 +78,7 @@ export class ChartPyramidComponent implements OnInit, AfterViewInit {
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.inversed = true;
     categoryAxis.renderer.labels.template.fontSize = 12;
+    categoryAxis.renderer.minGridDistance = 5;
 
     let valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
     valueAxis.extraMin = 0.1;

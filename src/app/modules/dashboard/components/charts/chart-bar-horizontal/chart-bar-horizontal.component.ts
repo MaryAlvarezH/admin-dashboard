@@ -43,7 +43,7 @@ export class ChartBarHorizontalComponent implements OnInit, AfterViewInit {
     let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = this.category;
     categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.minGridDistance = 30;
+    categoryAxis.renderer.minGridDistance = 5;
     categoryAxis.renderer.labels.template.horizontalCenter = 'middle';
     categoryAxis.renderer.labels.template.verticalCenter = 'middle';
     categoryAxis.tooltip.disabled = true;
