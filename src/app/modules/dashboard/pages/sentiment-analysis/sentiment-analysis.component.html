@@ -2,30 +2,39 @@
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
             <a class="nav-link" [ngClass]="{'active bg-light' : activeTabView === 1}" (click)="activeTabView = 1">
-                <span class="h2 py-2 ml-3 mr-3">Sector</span>
+                <span class="h2 py-2 ml-3 mr-3">General</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" [ngClass]="{'active bg-light' : activeTabView === 2}" (click)="activeTabView = 2">
-                <span class="h2 py-2 ml-3 mr-3">Categoría</span>
+                <span class="h2 py-2 ml-3 mr-3">Computo</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" [ngClass]="{'active bg-light' : activeTabView === 3}" (click)="activeTabView = 3">
-                <span class="h2 py-2 ml-3 mr-3">Medio</span>
+                <span class="h2 py-2 ml-3 mr-3">HW Print</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active bg-light' : activeTabView === 4}" (click)="activeTabView = 4">
+                <span class="h2 py-2 ml-3 mr-3">Supplies</span>
             </a>
         </li>
     </ul>
 
     <ng-container *ngIf="activeTabView === 1">
-        <p class="text-muted">Sector</p>
+        <p class="text-muted">General</p>
     </ng-container>
 
     <ng-container *ngIf="activeTabView === 2">
-        <p class="text-muted">Categoría</p>
+        <p class="text-muted">Computo</p>
     </ng-container>
 
     <ng-container *ngIf="activeTabView === 3">
-        <p class="text-muted">Medio</p>
+        <p class="text-muted">HW Print</p>
+    </ng-container>
+
+    <ng-container *ngIf="activeTabView === 4">
+        <p class="text-muted">Supplies</p>
     </ng-container>
 </div>
