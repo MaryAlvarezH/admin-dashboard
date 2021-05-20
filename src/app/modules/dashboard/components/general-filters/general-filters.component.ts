@@ -251,6 +251,8 @@ export class GeneralFiltersComponent implements OnInit {
           return { id: retailer.id, name: `${retailer.country_code} - ${retailer.name}` }
         });
 
+        retailers.sort((a, b) => a.name.localeCompare(b.name));
+
         this.retailerList = retailers;
         this.filteredRetailerList = retailers;
 
