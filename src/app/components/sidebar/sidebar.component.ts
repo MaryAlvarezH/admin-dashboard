@@ -19,13 +19,7 @@ declare interface RouteInfo {
   isForAdmin?: boolean;
 }
 
-export const ROUTES = [
-  // {
-  //   path: '/dashboard/investment',
-  //   title: 'Google Investment',
-  //   isForAdmin: false
-  // }
-]
+export const ROUTES = [];
 
 @Component({
   selector: 'app-sidebar',
@@ -302,7 +296,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
       })
       .catch(error => {
         const errMsg = error?.error?.message ? error.error.message : error?.message;
-        this.router.navigate(['dashboard/investment']);
         console.error(`[sidebar.component]: ${errMsg}`);
         throw (new Error(errMsg));
       });
