@@ -1,0 +1,35 @@
+.text-danger {
+    line-height: 1rem; 
+}
+
+li {
+    cursor: pointer;
+}
+
+.menu-caret {
+    min-width: 1.5rem !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sub-navbar {
+    margin-right: 0 !important;
+    margin-left: 2.2rem !important;
+
+    .nav-link {
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+    }
+}
+
+
+ul.nav {
+   z-index: 1030; 
+}
+
+.admin-header {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}

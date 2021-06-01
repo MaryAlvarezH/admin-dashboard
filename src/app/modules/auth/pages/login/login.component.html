@@ -1,0 +1,77 @@
+<div class="container pb-4 pt-5 pb-md-7 pt-md-9">
+  <div class="row justify-content-start">
+    <div class="col-lg-5 col-md-7">
+      <div class="card shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+
+          <p class="text-center text-lg mb-4"><b>Programa HP COOP</b></p>
+
+          <div class="logo-container text-center">
+            <img src="assets/img/brand/hp-logo.png">
+          </div>
+
+          <p class="text-center bold my-4"><b>Iniciar sesión</b></p>
+
+          <form role="form" [formGroup]="form" (ngSubmit)="login(email.value, password.value)">
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative"
+                [ngClass]="{'is-invalid': !email.valid && email.touched || !email.valid && email.touched}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input [formControl]="email" class="form-control" placeholder="Correo electrónico" type="email">
+              </div>
+              <small class="text-danger" *ngIf="!email.valid && email.touched || !email.valid && email.touched">
+                Ingresa un correo electrónico válido.
+              </small>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative"
+                [ngClass]="{'is-invalid': !password.valid && password.touched || !password.valid && password.touched}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" [ngClass]="{'text-primary': pwdModeOn}"
+                    (click)="pwdModeOn = !pwdModeOn">
+                    <i class="ni ni-lock-circle-open"></i>
+                  </span>
+                </div>
+                <input [formControl]="password" class="form-control" placeholder="Contraseña"
+                  [attr.type]="pwdModeOn ? 'text' : 'password'">
+              </div>
+              <small class="text-danger"
+                *ngIf="!password.valid && password.touched || !password.valid && password.touched">
+                Ingresa una contraseña válida.
+              </small>
+            </div>
+            <div class="custom-control custom-control-alternative custom-checkbox">
+              <input [formControl]="remember_password" class="custom-control-input" id="customCheckLogin"
+                type="checkbox">
+              <label class="custom-control-label" for="customCheckLogin">
+                <span class="text-muted">Recuérdame</span>
+              </label>
+            </div>
+
+            <!-- error message -->
+            <div class="text-center mt-4">
+              <small class="text-danger" *ngIf="reqStatus === 3">
+                {{ errorMsg }}
+              </small>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary my-4" [disabled]="!form.valid || reqStatus === 1">
+                Acceder
+              </button>
+            </div>
+          </form>
+          <div class="row mt-3">
+            <div class="col-12">
+              <a href="javascript:void(0)" routerLink="/forgot-password">
+                <small>¿Has olvidado tu contraseña?</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

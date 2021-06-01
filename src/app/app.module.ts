@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,9 +15,13 @@ import { ComponentsModule } from './components/components.module';
 import { ChartJsComponent } from './pages/chart-js/chart-js.component';
 import { DatasetsService } from './services/datasets.service';
 import { AmchartsComponent } from './pages/amcharts/amcharts.component';
-import { ForgotPswComponent } from './pages/forgot-psw/forgot-psw.component';
-import { ResetPswComponent } from './pages/reset-psw/reset-psw.component';
-
+import { UserService } from './services/user.service';
+import { CookieService } from 'ngx-cookie-service';
+import { SessionInterceptor } from './services/interceptor.service';
+import { LoginGuard } from './login.guard';
+import { ConfigurationProvider } from './app.constants';
+import { SharedModule } from './modules/shared/shared.module';
+import { AppStateService } from './services/app-state.service';
 
 @NgModule({
   imports: [
@@ -27,18 +31,29 @@ import { ResetPswComponent } from './pages/reset-psw/reset-psw.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
     ChartJsComponent,
-    AmchartsComponent,
-    ForgotPswComponent,
-    ResetPswComponent,
+    AmchartsComponent
   ],
-  providers: [DatasetsService],
+  providers: [
+    DatasetsService,
+    UserService,
+    CookieService,
+    LoginGuard,
+    AppStateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SessionInterceptor,
+      multi: true
+    },
+    ConfigurationProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

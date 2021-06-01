@@ -1,0 +1,361 @@
+<!-- TRÁFICO, CONVERSIONES, AUP & BR -->
+<ng-container>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="mb-3">
+                <span class="h3">Análisis por Tráfico, Conversiones, AUP y BR</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="pills-container">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab1 === 1}"
+                            (click)="changeData('traffic', 1)">Tráfico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab1 === 2}"
+                            (click)="changeData('conversions', 2)">Conversiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab1 === 3}"
+                            (click)="changeData('aup', 3)">AUP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab1 === 4}"
+                            (click)="changeData('br', 4)">BR</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- devices and gender in Traffic and Conversions -->
+        <ng-container *ngIf="selectedTab1 <= 2">
+            <!-- devices -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por dispositivos</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por dispositivos</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por dispositivos</span>
+                        <span *ngSwitchCase="4" class="h4">BR por dispositivos</span>
+                    </div>
+                    <div class="card-body">
+                        <app-chart-pictorial [data]="devices" name="devices" category="name" iconType="monitor"
+                            height="280px">
+                        </app-chart-pictorial>
+                    </div>
+                </div>
+            </div>
+
+            <!-- gender -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por Género</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por Género</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por Género</span>
+                        <span *ngSwitchCase="4" class="h4">BR por Género</span>
+                    </div>
+                    <div class="card-body">
+                        <app-chart-pictorial [data]="gender" name="gender" category="name" iconType="man"
+                            height="280px">
+                        </app-chart-pictorial>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- devices and gender in AUP -->
+        <ng-container *ngIf="selectedTab1 === 3">
+            <!-- devices -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por dispositivos</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por dispositivos</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por dispositivos</span>
+                        <span *ngSwitchCase="4" class="h4">BR por dispositivos</span>
+                    </div>
+                    <div class="card-body">
+                        <app-chart-bar [data]="devices" name="devices" valueFormat="USD" category="name" height="280px"
+                            [legendsByCategory]="true">
+                        </app-chart-bar>
+                    </div>
+                </div>
+            </div>
+
+            <!-- gender -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por Género</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por Género</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por Género</span>
+                        <span *ngSwitchCase="4" class="h4">BR por Género</span>
+                    </div>
+                    <div class="card-body">
+                        <app-chart-bar [data]="gender" name="gender" valueFormat="USD" category="name" height="280px"
+                            [legendsByCategory]="true">
+                        </app-chart-bar>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- devices and gender in BR -->
+        <ng-container *ngIf="selectedTab1 === 4">
+            <!-- devices -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por dispositivos</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por dispositivos</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por dispositivos</span>
+                        <span *ngSwitchCase="4" class="h4">BR por dispositivos</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-xl-6 mt-5 mt-xl-0">
+                                <div class="chart-legend mt-0">
+                                    <div class="legend-container">
+                                        <div class="legend-square on color-1"></div>
+                                        <div class="legend-label">Desktop {{ desktopByBR[1].value }}%</div>
+                                    </div>
+                                </div>
+                                <app-chart-pictorial [data]="desktopByBR" name="devices-desktop"
+                                    [uniqueDimensionConf]="{color: '#67B6DC'}" category="name" iconType="monitor"
+                                    height="280px">
+                                </app-chart-pictorial>
+                            </div>
+                            <div class="col-12 col-xl-6 mt-5 mt-xl-0">
+                                <div class="chart-legend mt-0">
+                                    <div class="legend-container">
+                                        <div class="legend-square on color-2"></div>
+                                        <div class="legend-label">Mobile {{ mobileByBR[1].value }}%</div>
+                                    </div>
+                                </div>
+                                <app-chart-pictorial [data]="mobileByBR" name="devices-mobile"
+                                    [uniqueDimensionConf]="{color: '#6794DC'}" category="name" iconType="cellphone"
+                                    height="280px">
+                                </app-chart-pictorial>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- gender -->
+            <div class="col-12 col-md-6 mt-4">
+                <div class="card">
+                    <div class="card-header" [ngSwitch]="selectedTab1">
+                        <span *ngSwitchCase="1" class="h4">Tráfico por Género</span>
+                        <span *ngSwitchCase="2" class="h4">Conversiones por Género</span>
+                        <span *ngSwitchCase="3" class="h4">AUP por Género</span>
+                        <span *ngSwitchCase="4" class="h4">BR por Género</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-xl-6 mt-5 mt-xl-0">
+                                <div class="chart-legend mt-0">
+                                    <div class="legend-container">
+                                        <div class="legend-square on color-1"></div>
+                                        <div class="legend-label">Hombres {{ menByBR[1].value }}%</div>
+                                    </div>
+                                </div>
+                                <app-chart-pictorial [data]="menByBR" name="gender-man"
+                                    [uniqueDimensionConf]="{color: '#67B6DC'}" category="name" iconType="man"
+                                    height="280px">
+                                </app-chart-pictorial>
+                            </div>
+
+                            <div class="col-12 col-xl-6 mt-5 mt-xl-0">
+                                <div class="chart-legend mt-0">
+                                    <div class="legend-container">
+                                        <div class="legend-square on color-2"></div>
+                                        <div class="legend-label">Mujeres {{ womenByBR[1].value }}%</div>
+                                    </div>
+                                </div>
+                                <app-chart-pictorial [data]="womenByBR" name="gender-woman"
+                                    [uniqueDimensionConf]="{color: '#6794DC'}" category="name" iconType="woman"
+                                    height="280px">
+                                </app-chart-pictorial>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- age -->
+        <div class="col-12 col-md-6 mt-4">
+            <div class="card">
+                <div class="card-header" [ngSwitch]="selectedTab1">
+                    <span *ngSwitchCase="1" class="h4">Tráfico por Edad</span>
+                    <span *ngSwitchCase="2" class="h4">Conversiones por Edad</span>
+                    <span *ngSwitchCase="3" class="h4">AUP por Edad</span>
+                    <span *ngSwitchCase="4" class="h4">BR por Edad</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-lollipop [data]="age" name="age" category="age"
+                        [valueFormat]="selectedTab1 !== 3 ? '%' : 'USD'" height="280px">
+                    </app-chart-lollipop>
+                </div>
+            </div>
+        </div>
+
+        <!-- age and gender -->
+        <div class="col-12 col-md-6 mt-4">
+            <div class="card">
+                <div class="card-header" [ngSwitch]="selectedTab1">
+                    <span *ngSwitchCase="1" class="h4">Tráfico por Género y Edad</span>
+                    <span *ngSwitchCase="2" class="h4">Conversiones por Género y Edad</span>
+                    <span *ngSwitchCase="3" class="h4">AUP por Género y Edad</span>
+                    <span *ngSwitchCase="4" class="h4">BR por Género y Edad</span>
+                </div>
+                <div class="card-body">
+                    <ng-container *ngIf="selectedTab1 !== 3">
+                        <app-chart-pyramid [data]="ageByGender" name="age-and-gender" valueFormat="%" height="280px">
+                        </app-chart-pyramid>
+                    </ng-container>
+                    <ng-container *ngIf="selectedTab1 === 3">
+                        <app-chart-pyramid [data]="ageByGender" name="age-and-gender-2" height="280px"
+                            valueFormat="USD">
+                        </app-chart-pyramid>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- TRAFICO Y CONVERSIONES POR DIA Y HORA -->
+<ng-container>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="mb-3">
+                <span class="h3">Tráfico y conversiones por hora y por día</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="pills-container">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab2 === 1}"
+                            (click)="selectedTab2 = 1">Tráfico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" [ngClass]="{'active': selectedTab2 === 2}"
+                            (click)="selectedTab2 = 2">Conversiones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="selectedTab2 === 1 || selectedTab2 === 2">
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card" style="height: 100%;">
+                <div class="card-header">
+                    <span class="h4">{{selectedTab2 === 1 ? 'Tráfico' : 'Conversiones'}}
+                        por día de la semana y hora del día</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-heat-map [data]="heatmapData" name="weekday-sesions" height="100%">
+                    </app-chart-heat-map>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">{{selectedTab2 === 1 ? 'Tráfico' : 'Conversiones'}}
+                        por día de la semana</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-bar-horizontal [data]="trafficByDay" name="traffic-day" category='weekday' value='value'
+                        height="250px">
+                    </app-chart-bar-horizontal>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <span class="h4">{{selectedTab2 === 1 ? 'Tráfico' : 'Conversiones'}}
+                        por hora del día</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-lollipop [data]="trafficByHour" name="traffic-hour" category="hour" value="visits"
+                        height="250px">
+                    </app-chart-lollipop>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONVERSIONES VS TRÁFICO -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <span class="h3">Conversiones vs Tráfico</span>
+        </div>
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">Conversiones y tráfico por día de la semana</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-line-comparison [data]="conversionsTrafficPerDay" name="conv-tra-day"
+                        valueName1="Conversiones" valueName2="Tráfico">
+                    </app-chart-line-comparison>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">Conversiones y tráfico por hora del día</span>
+                </div>
+                <div class="card-body">
+                    <app-chart-line-comparison [data]="conversionsTrafficPerHour" name="conv-tra-hour"
+                        valueName1="Conversiones" valueName2="Tráfico">
+                    </app-chart-line-comparison>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- AUDIENCIAS -->
+<ng-container>
+    <div class="row mt-5">
+        <div class="col-12">
+            <span class="h3">Audiencias - Afinidad y Mercado</span>
+        </div>
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">Categoría de afinidad (cobertura)</span>
+                </div>
+                <div class="card-body">
+                    <p class="text-center text-muted">
+                        Work in progress...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">Segmento de mercado</span>
+                </div>
+                <div class="card-body">
+                    <p class="text-center text-muted">
+                        Work in progress...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -22,6 +22,15 @@
 			box-shadow: none;
 		}
 	}
+
+	&.is-invalid {
+		border-bottom: 1px solid $red;
+	}
+
+	&:focus-within {
+		border-bottom: 1px solid $primary !important;
+		
+	}
 }
 
 .input-group-text {

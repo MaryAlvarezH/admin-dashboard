@@ -1,0 +1,28 @@
+<div class="container pb-4 pt-5 pb-md-7 pt-md-9">
+  <div class="row justify-content-start">
+    <div class="col-lg-5 col-md-7">
+      <div class="card shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+
+          <p class="text-center text-lg mb-4"><b>Programa HP COOP</b></p>
+
+          <div class="logo-container text-center mb-4">
+            <img src="assets/img/brand/hp-logo.png">
+          </div>
+
+          <p class="text-center bold my-4"><b>Cambiar contraseña</b></p>
+
+          <app-set-psw submitBtnLegend="Cambiar contraseña" (passwordChange)="resetPsw($event)"
+            [submitting]="reqStatus === 1 || reqStatus === 2 ? true : false" [submitErrorLegend]="errorMsg">
+          </app-set-psw>
+
+          <div class="text-center">
+            <small class="text-success" *ngIf="reqStatus === 2">
+              Tu <b>contraseña</b> se ha actualizado correctamente. Redirigiendo a la página de <b>Inicio de sesión.</b>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
